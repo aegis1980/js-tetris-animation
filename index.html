@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TetrisMatrixDraw on HTML Canvas</title>
+  <style>
+    canvas {
+      background: #222; 
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="800" height="600"></canvas>
+
+  <script src="tetrisnumbers.js"></script> 
+    <script src="tetrisletters.js"></script> 
+  <script src="tetrismatrixdraw.js"></script> 
+  <script>
+    const SCROLL_SPEED = 20;       // milliseconds between shifting left
+
+    // Example usage after the page loads:
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Create an instance of TetrisMatrixClock
+        const tmd = new TetrisMatrixClock(ctx);
+        let lastDropTime = 0;
+      
+        // ~~~~~~~~~~~~~~ MAIN ANIMATION LOOP ~~~~~~~~~~~~~~
+        function animate(timestamp){
+            
+          requestAnimationFrame(animate);
+            // Clear the entire canvas
+
+              // Check if it's time to scroll left
+          if (timestamp - lastDropTime > SCROLL_SPEED) {
+            lastDropTime = timestamp;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            tmd.drawNumbers(10,100,true);
+          }
+        }
+        requestAnimationFrame( animate);
+    });
+  </script>
+</body>
+</html>

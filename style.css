@@ -1,0 +1,12 @@
+.glowing {
+    width: 200px; /* Width of the rectangle */
+    height: 100px; /* Height of the rectangle */
+    background: #ff0000; /* Base color of the rectangle (LED color) */
+    border-radius: 10px; /* Rounded corners (optional) */
+    box-shadow: 
+      0 0 10px #ff0000, /* Inner soft glow */
+      0 0 20px #ff0000, /* Medium glow */
+      0 0 40px #ff4d4d, /* Outer stronger glow */
+      0 0 80px #ff8080; /* Largest glow effect */
+    animation: pulse 2s infinite;
+  }
